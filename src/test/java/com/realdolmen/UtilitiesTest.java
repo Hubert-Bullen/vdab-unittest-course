@@ -29,4 +29,9 @@ public class UtilitiesTest {
     public void greatestCommonFactorOfTwoEqualNumbersEqualsTheNumberItself() throws Exception {
         assertEquals(28, Utilities.greatestCommonFactor(28, 28));
     }
+
+    @Test
+    public void greatestCommonFactorReturnsoneIfEitherFactorIsZero(){
+        assertEquals(1, Utilities.greatestCommonFactor(0, 0));
+    }
 }
