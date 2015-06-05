@@ -13,6 +13,10 @@ public class Runner {
 
         System.out.println(test.asDouble());
 
+        test2.simplify();
+        System.out.println(test2.getNumerator());
+        System.out.println(test2.getDenominator());
+
         /*System.out.println(test);
         System.out.println(test.getNumerator());
         System.out.println(test.getDenominator());

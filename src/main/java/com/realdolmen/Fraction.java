@@ -13,10 +13,11 @@ public class Fraction {
     }
 
 
-    public void simplify(){
+    public Fraction simplify(){
         double gcf = Utilities.greatestCommonFactor(numerator,denominator);
         numerator /= gcf;
         denominator /= gcf;
+        return this;
 
     }
 
