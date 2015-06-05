@@ -69,6 +69,21 @@ public class FractionTest {
         Fraction expected = new Fraction (-23,24);
         assertEquals(expected, test.add(test2));
     }
+    @Test
+    public void testDoesSubtractingPositiveFractionsWork(){
+        Fraction test = new Fraction(1,2);
+        Fraction test2 = new Fraction(1,5);
+        Fraction expected = new Fraction (3,10);
+        assertEquals(expected, test.subtract(test2));
+    }
+
+    @Test
+    public void testDoesSubtractingNegativeFractionsWork(){
+        Fraction test = new Fraction(-1,2);
+        Fraction test2 = new Fraction(-1,5);
+        Fraction expected = new Fraction (-3,10);
+        assertEquals(expected, test.subtract(test2));
+    }
 
     @Test
     public void testDoesMultiplyingPositiveFractionsWork(){

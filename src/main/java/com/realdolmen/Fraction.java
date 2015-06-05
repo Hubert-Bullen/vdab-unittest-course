@@ -26,12 +26,8 @@ public class Fraction {
     }
 
     public Fraction subtract(Fraction that){
-        int refactorNumThis = this.getNumerator() * that.getDenominator();
-        int refactorNumThat = that.getNumerator() * this.getDenominator();
-        int addedNumer = refactorNumThat - refactorNumThis;
-        int addedDenom = this.getDenominator() * that.getDenominator();
-        Fraction result = new Fraction(addedNumer,addedDenom);
-        return result;
+        Fraction negativeThat = new Fraction (- that.getNumerator(),that.getDenominator());
+        return this.add(negativeThat);
     }
 
     public Fraction multiply(Fraction that){
@@ -42,11 +38,8 @@ public class Fraction {
     }
 
     public Fraction divide(Fraction that){
-        Fraction thatrep = that.repriprocal();
-        int multNumer = this.getNumerator() * thatrep.getNumerator();
-        int multDenom = this.getDenominator() * thatrep.getDenominator();
-        Fraction result = new Fraction(multNumer,multDenom);
-        return result;
+        Fraction thatrep = that.reciprocal();
+        return this.multiply(thatrep);
     }
 
 
@@ -57,7 +50,7 @@ public class Fraction {
 
     }
 
-    public Fraction repriprocal(){
+    public Fraction reciprocal(){
         Fraction repthis = new Fraction(this.getDenominator(),this.getNumerator());
         return repthis;
     }

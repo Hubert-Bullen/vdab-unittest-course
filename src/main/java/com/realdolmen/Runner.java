@@ -18,5 +18,8 @@ public class Runner {
         System.out.println(test.subtract(test2));
         System.out.println(test.multiply(test2));
         System.out.println(test.divide(test2));
+
+        Fraction test3 = new Fraction(1,5);
+        System.out.println(test.subtract(test3));
     }
 }
