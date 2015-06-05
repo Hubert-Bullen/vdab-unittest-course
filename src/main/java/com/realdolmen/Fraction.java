@@ -8,31 +8,62 @@ public class Fraction {
     private int denominator; // Noemer
 
     public Fraction(int numerator, int denominator) {
+        if (denominator == 0) {
+            throw new DenominatorIsZeroException();
+        }
         this.numerator = numerator;
         this.denominator = denominator;
+        simplify(); // Word dit altijd gedaan en hebben we er vor de rest geen last van.
+    }
+
+    public Fraction add(Fraction that){
+        int refactorNumThis = this.getNumerator() * that.getDenominator();
+        int refactorNumThat = that.getNumerator() * this.getDenominator();
+        int addedNumer = refactorNumThat + refactorNumThis;
+        int addedDenom = this.getDenominator() * that.getDenominator();
+        Fraction result = new Fraction(addedNumer,addedDenom);
+        return result;
+    }
+
+    public Fraction subtract(Fraction that){
+        int refactorNumThis = this.getNumerator() * that.getDenominator();
+        int refactorNumThat = that.getNumerator() * this.getDenominator();
+        int addedNumer = refactorNumThat - refactorNumThis;
+        int addedDenom = this.getDenominator() * that.getDenominator();
+        Fraction result = new Fraction(addedNumer,addedDenom);
+        return result;
+    }
+
+    public Fraction multiply(Fraction that){
+        int multNumer = this.getNumerator() * that.getNumerator();
+        int multDenom = this.getDenominator() * that.getDenominator();
+        Fraction result = new Fraction(multNumer,multDenom);
+        return result;
+    }
+
+    public Fraction divide(Fraction that){
+        Fraction thatrep = that.repriprocal();
+        int multNumer = this.getNumerator() * thatrep.getNumerator();
+        int multDenom = this.getDenominator() * thatrep.getDenominator();
+        Fraction result = new Fraction(multNumer,multDenom);
+        return result;
     }
 
 
-    public Fraction simplify(){
+    private void simplify(){
         double gcf = Utilities.greatestCommonFactor(numerator,denominator);
-        numerator /= gcf;
-        denominator /= gcf;
-        return this;
+        this.numerator /= gcf;
+        this.denominator /= gcf;
 
+    }
+
+    public Fraction repriprocal(){
+        Fraction repthis = new Fraction(this.getDenominator(),this.getNumerator());
+        return repthis;
     }
 
     public double asDouble(){
         return numerator/(double)denominator;
-    }
-
-    public boolean equalsFraction(Fraction f){
-        if (this.asDouble() == f.asDouble()){
-            return true;
-        }
-        else{
-            return false;
-        }
-
     }
 
     @Override

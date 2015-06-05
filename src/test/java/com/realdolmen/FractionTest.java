@@ -8,6 +8,11 @@ import static org.junit.Assert.*;
  */
 public class FractionTest {
 
+    @Test (expected = DenominatorIsZeroException.class)
+    public void testZeroAsDenominatorThrowsException(){
+        Fraction test = new Fraction(1,0);
+    }
+
     @Test
     public void testDoesEqualsWork(){
         Fraction test = new Fraction(1,2);
@@ -29,11 +34,10 @@ public class FractionTest {
     }
 
     @Test
-    public void testDoesSimplifyWork(){
+    public void testDoesAutoSimplifyWork(){
         Fraction test2 = new Fraction(4,8);
-        test2.simplify();
         assertEquals(1,test2.getNumerator());
-        assertEquals(2, test2.getDenominator());
+        assertEquals(2,test2.getDenominator());
     }
 
     @Test
@@ -48,4 +52,74 @@ public class FractionTest {
         Fraction test2 = new Fraction(30,9);
         assertTrue(test.equals(test2));
     }
+
+    @Test
+    public void testDoesAddingPositiveFractionsWork(){
+        Fraction test = new Fraction(1,2);
+        Fraction test2 = new Fraction(220,480);
+        Fraction expected = new Fraction (23,24);
+        assertEquals(expected, test.add(test2));
+
+    }
+
+    @Test
+    public void testDoesAddingNegativeFractionsWork(){
+        Fraction test = new Fraction(-1,2);
+        Fraction test2 = new Fraction(-220,480);
+        Fraction expected = new Fraction (-23,24);
+        assertEquals(expected, test.add(test2));
+    }
+
+    @Test
+    public void testDoesMultiplyingPositiveFractionsWork(){
+        Fraction test = new Fraction(1,2);
+        Fraction test2 = new Fraction(220,480);
+        Fraction expected = new Fraction (11,48);
+        assertEquals(expected, test.multiply(test2));
+    }
+
+    @Test
+    public void testDoesMultiplyingNegativeFractionsWork(){
+        Fraction test = new Fraction(-1,2);
+        Fraction test2 = new Fraction(-220,480);
+        Fraction expected = new Fraction (11,48);
+        assertEquals(expected, test.multiply(test2));
+    }
+
+    @Test
+    public void testDoesMultiplyingNegativeAndPositiveFractionsWork(){
+        Fraction test = new Fraction(-1,2);
+        Fraction test2 = new Fraction(220,480);
+        Fraction expected = new Fraction (-11,48);
+        assertEquals(expected, test.multiply(test2));
+    }
+
+    @Test
+    public void testDoesDividingPositiveFractionsWork(){
+        Fraction test = new Fraction(1,2);
+        Fraction test2 = new Fraction(220,480);
+        Fraction expected = new Fraction (12,11);
+        assertEquals(expected, test.divide(test2));
+    }
+
+     @Test
+    public void testDoesDividingNegativeFractionsWork(){
+        Fraction test = new Fraction(-1,2);
+        Fraction test2 = new Fraction(-220,480);
+        Fraction expected = new Fraction (12,11);
+        assertEquals(expected, test.divide(test2));
+    }
+
+     @Test
+    public void testDoesDividingPositiveAndNegativeFractionsWork(){
+        Fraction test = new Fraction(-1,2);
+        Fraction test2 = new Fraction(220,480);
+        Fraction expected = new Fraction (-12,11);
+        assertEquals(expected, test.divide(test2));
+    }
+
+
+
+
+
 }

@@ -5,22 +5,18 @@ package com.realdolmen;
  */
 public class Runner {
     public static void main(String[] args) {
-        /*System.out.println((Utilities.greatestCommonFactor(10,3)));*/
-
         Fraction test = new Fraction(1,2);
-        Fraction test2 = new Fraction(4,8);
+        Fraction test2 = new Fraction(220,480);
         System.out.println(test.equals(test2));
 
         System.out.println(test.asDouble());
 
-        test2.simplify();
         System.out.println(test2.getNumerator());
         System.out.println(test2.getDenominator());
 
-        /*System.out.println(test);
-        System.out.println(test.getNumerator());
-        System.out.println(test.getDenominator());
-
-        System.out.println(Utilities.greatestCommonFactor(3,10));*/
+        System.out.println(test.add(test2));
+        System.out.println(test.subtract(test2));
+        System.out.println(test.multiply(test2));
+        System.out.println(test.divide(test2));
     }
 }
