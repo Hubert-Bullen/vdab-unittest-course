@@ -31,7 +31,8 @@ public class UtilitiesTest {
     }
 
     @Test
-    public void greatestCommonFactorReturnsoneIfEitherFactorIsZero(){
-        assertEquals(1, Utilities.greatestCommonFactor(0, 0));
+    public void greatestCommonFactorReturnsOneIfEitherFactorIsZero(){
+        assertEquals(1, Utilities.greatestCommonFactor(0, 3));
+        assertEquals(1, Utilities.greatestCommonFactor(108, 0));
     }
 }
