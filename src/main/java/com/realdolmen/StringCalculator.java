@@ -13,11 +13,22 @@ public class StringCalculator {
     }
 
     public int add(){
+        ArrayList<Integer> sepnum = new ArrayList<>();
         if (expression.equals("") ){
             return 0;
         }
-        String [] numbers = expression.split(",");
-        ArrayList<Integer> sepnum = new ArrayList<>();
+        if (expression.contains(",")){
+            String [] numbers = expression.split(",");
+            int result=0;
+            for (String n : numbers){
+                sepnum.add(Integer.parseInt(n));
+            }
+            for (int number : sepnum){
+                result += number;
+            }
+            return result;
+        }
+        String [] numbers = expression.split("\n");
         int result=0;
         for (String n : numbers){
             sepnum.add(Integer.parseInt(n));

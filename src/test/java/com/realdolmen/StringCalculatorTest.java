@@ -29,5 +29,19 @@ public class StringCalculatorTest {
 
     }
 
+    @Test
+    public void testAddingMoreThan2Numbers(){
+        StringCalculator calc = new StringCalculator("7,8,10,14");
+        assertEquals(39,calc.add());
+
+    }
+
+    @Test
+    public void testAddingWithNewLine(){
+        StringCalculator calc = new StringCalculator("4\n5");
+        assertEquals(9, calc.add());
+    }
+
+
 
 }
