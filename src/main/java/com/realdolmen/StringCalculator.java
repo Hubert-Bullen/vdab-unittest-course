@@ -38,3 +38,4 @@ public class StringCalculator {
         this.expression = expression;
     }
 }
+ // mvn cobertura:cobertura Dan bij target -> site -> right click index open in browser
