@@ -42,6 +42,13 @@ public class StringCalculatorTest {
         assertEquals(9, calc.add());
     }
 
+    @Test
+    public void testAddingWithNewLineAndComma(){
+        StringCalculator calc = new StringCalculator("4\n5,1");
+        assertEquals(10, calc.add());
+    }
+
+
 
 
 }

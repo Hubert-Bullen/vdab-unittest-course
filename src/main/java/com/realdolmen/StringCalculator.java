@@ -14,27 +14,17 @@ public class StringCalculator {
 
     public int add(){
         ArrayList<Integer> sepnum = new ArrayList<>();
+        int result = 0;
         if (expression.equals("") ){
             return 0;
         }
-        if (expression.contains(",")){
-            String [] numbers = expression.split(",");
-            int result=0;
-            for (String n : numbers){
-                sepnum.add(Integer.parseInt(n));
-            }
-            for (int number : sepnum){
-                result += number;
-            }
-            return result;
-        }
-        String [] numbers = expression.split("\n");
-        int result=0;
-        for (String n : numbers){
+
+        String[] numbers = expression.split("\n|,"); //replaceAll werkte niet omdat je hem ook nog aan zichzelf meot toewijzen aka expression = expression.replaceAll()nlanl)
+        for (String n : numbers) {
             sepnum.add(Integer.parseInt(n));
         }
-        for (int number : sepnum){
-            result += number;
+        for (int number : sepnum) {
+                result += number;
         }
         return result;
 
