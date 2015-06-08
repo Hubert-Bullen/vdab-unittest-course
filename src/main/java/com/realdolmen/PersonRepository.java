@@ -1,6 +1,6 @@
 package com.realdolmen;
 
-public interface PersonRepository {
+public interface PersonRepository { //dao
     /**
      * Retrieves a person by it's primary key.
      * @param id The person's primary key.

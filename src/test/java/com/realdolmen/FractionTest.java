@@ -1,12 +1,15 @@
 package com.realdolmen;
 
 import org.junit.*;
+import org.junit.runners.Parameterized.*;
+
 import static org.junit.Assert.*;
 
 /**
  * Created by Hyuberuto on 05/06/15.
  */
 public class FractionTest {
+    // @Parameter (value = 0) Fraction test; TODO Parameters.
 
     @Test (expected = DenominatorIsZeroException.class)
     public void testZeroAsDenominatorThrowsException(){

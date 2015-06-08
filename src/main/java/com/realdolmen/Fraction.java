@@ -17,11 +17,11 @@ public class Fraction {
     }
 
     public Fraction add(Fraction that){
-        int refactorNumThis = this.getNumerator() * that.getDenominator();
+        /*int refactorNumThis = this.getNumerator() * that.getDenominator();
         int refactorNumThat = that.getNumerator() * this.getDenominator();
         int addedNumer = refactorNumThat + refactorNumThis;
-        int addedDenom = this.getDenominator() * that.getDenominator();
-        Fraction result = new Fraction(addedNumer,addedDenom);
+        int addedDenom = this.getDenominator() * that.getDenominator();*/
+        Fraction result = new Fraction((this.getNumerator() * that.getDenominator()) + (that.getNumerator() * this.getDenominator()), this.getDenominator() * that.getDenominator());
         return result;
     }
 
@@ -31,9 +31,9 @@ public class Fraction {
     }
 
     public Fraction multiply(Fraction that){
-        int multNumer = this.getNumerator() * that.getNumerator();
-        int multDenom = this.getDenominator() * that.getDenominator();
-        Fraction result = new Fraction(multNumer,multDenom);
+        /*int multNumer = this.getNumerator() * that.getNumerator();
+        int multDenom = this.getDenominator() * that.getDenominator();*/
+        Fraction result = new Fraction(this.getNumerator() * that.getNumerator(),this.getDenominator() * that.getDenominator());
         return result;
     }
 
@@ -61,6 +61,7 @@ public class Fraction {
 
     @Override
     public boolean equals(Object o){
+        if (!(o instanceof Fraction)) return false;
         Fraction f = (Fraction) o;
         if (this.asDouble() == f.asDouble()){
             return true;
