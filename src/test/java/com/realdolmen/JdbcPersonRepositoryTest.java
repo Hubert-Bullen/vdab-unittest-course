@@ -14,8 +14,7 @@ import org.junit.rules.ExpectedException;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.util.Date;
 
 /**
  * Created by Hyuberuto on 05/06/15.
@@ -50,12 +49,19 @@ public class JdbcPersonRepositoryTest {
 
     }
 
-    @Test (expected = RepositoryException.class)
-    public void testWhatIfIdDoesNotExistForFind(){
+    @Test
+    public void testNoPersonByThatId(){
         PersonRepository repository = new JdbcPersonRepository();
-        assertNotNull(repository.find(3));
+        assertNull(repository.find(3));
 
     }
+
+    /*@Test (expected = RepositoryException.class)
+    public void testWhatIfIdDoesNotExistForFind(){
+        PersonRepository repository = new JdbcPersonRepository();
+        assertNull(repository.find(3));
+
+    }*/
 
     @Test
     public void testRemovingPerson(){ // Not by Id!!
@@ -70,7 +76,7 @@ public class JdbcPersonRepositoryTest {
     }
 
     @Test
-    public void testFindPersonAddress (){
+    public void testFindPersonAddress(){
         PersonRepository repository = new JdbcPersonRepository();
         assertEquals("BakerStreet", repository.find(1).getAddress().getStreet());
         assertEquals("25",repository.find(1).getAddress().getNumber());
@@ -78,15 +84,19 @@ public class JdbcPersonRepositoryTest {
     }
 
     @Test
-    public  void testFindPersonCity (){
+    public  void testFindPersonCity(){
         PersonRepository repository = new JdbcPersonRepository();
         assertEquals("London",repository.find(1).getAddress().getCity().getName());
     }
 
     @Test
-    public void testAddingPerson (){
+    public void testAddingPerson(){
+        PersonRepository repository = new JdbcPersonRepository();
+        Person p1 = new Person("Luke", "Skywalker", new Date(1999,20,9,12,36), new Address ("HututBlock", "24", new City("4589-B","Tattooine")));
+        repository.save(p1);
+        assertEquals("Luke", repository.find(p1.getId()).getFirstName()); // TODO We kunnen niet op Id zoeken sinds de id een random generated one is. Check hoe Generated Keys werken.
+        // Logischerwijze zou het 3 zijn, maar omdat de random genertadkeys neit resetten gaat dit na elke test omhoog.
 
     }
-
 }
 

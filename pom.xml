@@ -23,7 +23,8 @@
                 </configuration>
             </plugin>
 			
-			<!-- To make mutation tests work. -->
+			<!-- To make mutation tests work. mvn org.pitest:pitest-maven:mutationCoverage
+ -->
 			<plugin>
 				<groupId>org.pitest</groupId>
 				<artifactId>pitest-maven</artifactId>
